@@ -28,6 +28,18 @@ LDADD = -L$(top_builddir)/libs -lfvwm3 $(readline_LIBS) $(freetype_LIBS) \
 # FIXME:
 # Despite not using X functions explicitly, the code includes
 # fvwmlib.h, which *does* include X headers and xpm.h!
+<<<<<<< HEAD
 AM_CPPFLAGS = -I$(top_srcdir) $(readline_CFLAGS) $(xpm_CFLAGS) \
 	      $(freetype_CFLAGS) $(X_CFLAGS)
+=======
+
+
+# If a previous installation was made with FVWM_BUILD_GOLäANG, remove
+# FvwmPrompt and FvwmCommand.
+install:
+	rm -f $(DESTDIR)$(bindir)/FvwmCommand
+	rm -f $(DESTDIR)$(bindir)/FvwmConsole
+	install $(module_PROGRAMS) $(DESTDIR)$(moduledir)
+	install $(module_SCRIPTS) $(DESTDIR)$(moduledir)
+>>>>>>> 2ce8f701 (With --enable-golang, add FvwmCommand wrapper script to FvwmPrompt.)
 endif !FVWM_BUILD_GOLANG
